@@ -1,0 +1,19 @@
+domain: vangelovj
+layout:
+- go.kubebuilder.io/v3
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}
+projectName: exercise-operator
+repo: github.com/vangelovj/exercise-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: vangelovj
+  group: exercise
+  kind: Exercise
+  path: github.com/vangelovj/exercise-operator/api/v1
+  version: v1
+version: "3"

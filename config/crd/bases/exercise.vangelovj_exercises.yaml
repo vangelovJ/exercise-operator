@@ -1,0 +1,73 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: exercises.exercise.vangelovj
+spec:
+  group: exercise.vangelovj
+  names:
+    kind: Exercise
+    listKind: ExerciseList
+    plural: exercises
+    singular: exercise
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Exercise is the Schema for the exercises API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ExerciseSpec defines the desired state of Exercise
+            properties:
+              image:
+                type: string
+              serviceAccount:
+                type: string
+              size:
+                description: Size is the size of the memcached deployment
+                format: int32
+                minimum: 0
+                type: integer
+            required:
+            - image
+            - serviceAccount
+            - size
+            type: object
+          status:
+            description: ExerciseStatus defines the observed state of Exercise
+            properties:
+              nodes:
+                description: Nodes are the names of the memcached pods
+                items:
+                  type: string
+                type: array
+            required:
+            - nodes
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

@@ -1,0 +1,10 @@
+apiVersion: exercise.vangelovj/v1
+kind: Exercise
+metadata:
+  name: exercise-linux
+  namespace: default
+spec:
+  size: 1
+  image: "vangelovj/exercise:v2"
+  serviceAccount: "default-admin"
+  # TODO(user): Add fields here
